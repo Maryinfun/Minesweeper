@@ -20,6 +20,12 @@ export const addField = () => {
   const cell = document.createComment('div');
 
   const bottom = document.createElement('footer');
+  const wrapFooter = document.createElement('div');
+  const buttonDark = document.createElement('button');
+  const buttonLight = document.createElement('button');
+  const buttonVol = document.createElement('button');
+  const buttonSave = document.createElement('button');
+  const buttonLoad = document.createElement('button');
 
   // HEADER STUFF
   top.className = 'header';
@@ -54,8 +60,21 @@ export const addField = () => {
   middle.className = 'main';
   body.appendChild(middle);
 
-
   // FOOTER STUFF
   bottom.className = 'footer';
   body.appendChild(bottom);
+  wrapFooter.className = 'wrapperF';
+  bottom.appendChild(wrapFooter);
+  buttonDark.className = 'btn btnDark';
+  wrapFooter.appendChild(buttonDark);
+  buttonLight.className = 'btn btnLight';
+  wrapFooter.appendChild(buttonLight);
+  buttonVol.className = 'btn volume';
+  wrapFooter.appendChild(buttonVol);
+  buttonSave.className = 'btn btnSave';
+  wrapFooter.appendChild(buttonSave);
+  buttonSave.innerHTML = 'SAVE';
+  buttonLoad.className = 'btn btnLoad';
+  wrapFooter.appendChild(buttonLoad);
+  buttonLoad.innerHTML = 'LOAD';
 };

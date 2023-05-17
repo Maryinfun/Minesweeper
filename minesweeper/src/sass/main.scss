@@ -21,7 +21,7 @@ body {
 .header {
     width: 90%;
     max-width: 920px;
-    height: 30%;
+    // height: 30%;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -64,6 +64,7 @@ body {
     width: 10rem;
     height: 3rem;
     font-size: 1.5rem;
+    margin: .5rem;
 }
 .data, .timer {
     position: relative;
@@ -104,10 +105,16 @@ body {
 // FOOTER
 .footer {
     width: 90%;
-    height: 15%;
+    // height: 15%;
     max-width: 920px;
     margin-bottom: 2rem;
     display: flex;
     align-self: center;
     background: inherit;
+}
+.wrapperF {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
 }
