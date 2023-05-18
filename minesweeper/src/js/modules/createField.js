@@ -1,6 +1,8 @@
 import img from '/src/assets/flag-green.svg';
 import img1 from '/src/assets/bomb.png';
 import img2 from '/src/assets/green-steps.svg';
+import img4 from '/src/assets/sound_mute_icon.svg';
+import img3 from '/src/assets/theme-icon.svg';
 export const addField = () => {
   console.log(1);
   const body = document.querySelector('body');
@@ -17,13 +19,15 @@ export const addField = () => {
   const time = document.createElement('span');
 
   const middle = document.createElement('main');
-  const cell = document.createComment('div');
+  const field = document.createElement('div');
+  // const cell = document.createComment('div');
 
   const bottom = document.createElement('footer');
   const wrapFooter = document.createElement('div');
   const buttonDark = document.createElement('button');
-  const buttonLight = document.createElement('button');
   const buttonVol = document.createElement('button');
+  // const buttonLight = document.createElement('button');
+  // const wrapFooter2 = document.createElement('div');
   const buttonSave = document.createElement('button');
   const buttonLoad = document.createElement('button');
 
@@ -37,13 +41,13 @@ export const addField = () => {
   top.appendChild(wrap);
   buttonL1.className = 'btn btnL1';
   wrap.appendChild(buttonL1);
-  buttonL1.innerHTML = 'Beginner';
+  buttonL1.innerHTML = 'BEGINNER';
   buttonL2.className = 'btn btnL2';
   wrap.appendChild(buttonL2);
-  buttonL2.innerHTML = 'Medium';
+  buttonL2.innerHTML = 'MEDIUM';
   buttonL3.className = 'btn btnL3';
   wrap.appendChild(buttonL3);
-  buttonL3.innerHTML = 'Expert';
+  buttonL3.innerHTML = 'EXPERT';
   flagQnt.className = 'data flagLeft';
   wrap.appendChild(flagQnt);
   flagQnt.innerHTML = `<img src = '${img}' style = 'width: 25%'>`;
@@ -59,22 +63,33 @@ export const addField = () => {
   // MAIN STUFF
   middle.className = 'main';
   body.appendChild(middle);
+  field.className = 'field';
+  middle.appendChild(field);
+  
+  const createField = (width, height, bombs_count) => {
+    const cellsCount = width * height;
+    field.innerHTML = '<button></button>'.repeat(cellsCount)
+  }
+  createField(10,10,15);
 
   // FOOTER STUFF
   bottom.className = 'footer';
   body.appendChild(bottom);
-  wrapFooter.className = 'wrapperF';
+  wrapFooter.className = 'wrap wrapperF';
   bottom.appendChild(wrapFooter);
-  buttonDark.className = 'btn btnDark';
-  wrapFooter.appendChild(buttonDark);
-  buttonLight.className = 'btn btnLight';
-  wrapFooter.appendChild(buttonLight);
-  buttonVol.className = 'btn volume';
-  wrapFooter.appendChild(buttonVol);
   buttonSave.className = 'btn btnSave';
   wrapFooter.appendChild(buttonSave);
   buttonSave.innerHTML = 'SAVE';
   buttonLoad.className = 'btn btnLoad';
   wrapFooter.appendChild(buttonLoad);
   buttonLoad.innerHTML = 'LOAD';
+  buttonDark.className = 'btn dark';
+  wrapFooter.appendChild(buttonDark);
+  // buttonDark.innerHTML = 'Dark/Light';s
+  buttonDark.innerHTML = `<img src = '${img3}' style = 'scale: 50%'>`;;
+  // buttonLight.className = 'btn btnLight';
+  // wrapFooter2.appendChild(buttonLight);
+  buttonVol.className = 'btn volume';
+  wrapFooter.appendChild(buttonVol);
+  buttonVol.innerHTML = `<img src = '${img4}' style = 'scale: 50%'>`;
 };

@@ -12,6 +12,7 @@ body {
     overflow-x: hidden;
     width: 100vw;
     height: 100vh;
+    min-width: 480px;
     display: flex;
     flex-direction: column;
     background: $background-night;
@@ -19,7 +20,7 @@ body {
 
 // HEADER
 .header {
-    width: 90%;
+    width: 100%;
     max-width: 920px;
     // height: 30%;
     margin-top: 2rem;
@@ -39,13 +40,16 @@ body {
 //     flex-wrap: wrap;
 //     text-align: center;
 // }
+
 .wrapper {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 5rem);
-    column-gap: 5%;
+    margin: 0.5rem;
+    column-gap: 0.2rem;
     row-gap: 1rem;
     justify-content: space-evenly;
+
 }
 .btn {
     position: relative;
@@ -88,33 +92,52 @@ body {
     padding-left: 10px;
 }
 .timer {
-    width: 10rem;
+    width: 5rem;
     height: 2rem;
+    margin: 0.6rem;
 }
 
 // MAIN 
 .main {
-    width: 90%;
+    width: 100%;
     max-width: 920px;
-    height: 55%;
     display: flex;
+    justify-content: center;
     align-self: center;
     background: inherit; 
+    margin: 2rem;
+}
+.field {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+}
+button {
+    height: 40px;
+    background-color: $background-day;
+    box-shadow: $shadow;
+    border-radius: .2px;
+
 }
 
 // FOOTER
 .footer {
-    width: 90%;
-    // height: 15%;
+    width: 100%;
     max-width: 920px;
     margin-bottom: 2rem;
     display: flex;
+    flex-wrap: wrap;
     align-self: center;
+    justify-content: center;
     background: inherit;
+    // justify-content: center;
 }
 .wrapperF {
+    width: 95%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
+    justify-content: space-evenly;
+}
+.dark, .volume {
+    width: 3rem;
+    display: flex;
+    align-items: center;
 }
