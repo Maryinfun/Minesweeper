@@ -57,7 +57,7 @@ export const addField = () => {
   clickQnt.className = 'data clicks';
   wrap.appendChild(clickQnt);
   clickQnt.innerHTML = `<img src = '${img2}' style = 'scale: 75%'>`;
-  time.className = 'timer';
+  time.className = 'data timer';
   top.appendChild(time);
 
   // MAIN STUFF
@@ -65,12 +65,13 @@ export const addField = () => {
   body.appendChild(middle);
   field.className = 'field';
   middle.appendChild(field);
-  
-  const createField = (width, height, bombs_count) => {
+
+  const createField = (width, height) => {
     const cellsCount = width * height;
-    field.innerHTML = '<button></button>'.repeat(cellsCount)
-  }
-  createField(10,10,15);
+    field.innerHTML = '<button></button>'.repeat(cellsCount);
+    
+  };
+  createField(10, 10, 15);
 
   // FOOTER STUFF
   bottom.className = 'footer';
@@ -86,7 +87,7 @@ export const addField = () => {
   buttonDark.className = 'btn dark';
   wrapFooter.appendChild(buttonDark);
   // buttonDark.innerHTML = 'Dark/Light';s
-  buttonDark.innerHTML = `<img src = '${img3}' style = 'scale: 50%'>`;;
+  buttonDark.innerHTML = `<img src = '${img3}' style = 'scale: 50%' class='img3'>`;
   // buttonLight.className = 'btn btnLight';
   // wrapFooter2.appendChild(buttonLight);
   buttonVol.className = 'btn volume';

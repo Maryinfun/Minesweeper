@@ -17,6 +17,9 @@ body {
     flex-direction: column;
     background: $background-night;
 }
+.body-light {
+    background-color: $background-day;
+}
 
 // HEADER
 .header {
@@ -76,8 +79,7 @@ body {
     height: 2rem;
     border-radius: 5px;
     background: $btn-color-night;
-    border: none;
-    box-shadow: $shadow;
+    // border: none;
     color: $font-color-night;
     font-weight: 700;
     padding: 0%;
@@ -114,9 +116,12 @@ body {
 button {
     height: 40px;
     background-color: $background-day;
-    box-shadow: $shadow;
+    box-shadow: $shadow-day;
     border-radius: .2px;
 
+}
+.button-light {
+    background-color: $background-night;
 }
 
 // FOOTER
@@ -141,3 +146,22 @@ button {
     display: flex;
     align-items: center;
 }
+.btn:hover {
+    cursor: pointer;
+}
+.btn:active {
+    box-shadow: $shadow-active;
+}
+.btn-light {
+    background: $btn-color-day;
+    color: $font-color-day;
+    box-shadow: $shadow-day;
+}
+.data-light {
+    background: $btn-color-day;
+    color: $font-color-day;
+}
+// .dark {
+//     background: center / cover
+//     url("/src/assets/theme-icon.svg");
+// }
