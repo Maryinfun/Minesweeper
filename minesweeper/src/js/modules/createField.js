@@ -16,7 +16,9 @@ export const addField = () => {
   const flagQnt = document.createElement('span');
   const bombQnt = document.createElement('span');
   const clickQnt = document.createElement('span');
+//   const wrap2 = document.createElement('div');
   const time = document.createElement('span');
+  const inputBomb = document.createElement('textarea');
 
   const middle = document.createElement('main');
   const field = document.createElement('div');
@@ -57,8 +59,13 @@ export const addField = () => {
   clickQnt.className = 'data clicks';
   wrap.appendChild(clickQnt);
   clickQnt.innerHTML = `<img src = '${img2}' style = 'scale: 75%'>`;
+//   wrap2.className = 'wrapper2';
+//   top.appendChild(wrap2);
   time.className = 'data timer';
-  top.appendChild(time);
+  wrap.appendChild(time);
+  inputBomb.className = 'area';
+  wrap.appendChild(inputBomb);
+  inputBomb.placeholder = 'SET BOMB NUMBER';
 
   // MAIN STUFF
   middle.className = 'main';
@@ -66,11 +73,38 @@ export const addField = () => {
   field.className = 'field';
   middle.appendChild(field);
 
-  const createField = (width, height) => {
-    const cellsCount = width * height;
+  const createField = (WIDTH, HEIGHT) => {
+    const cellsCount = WIDTH * HEIGHT;
     field.innerHTML = '<button></button>'.repeat(cellsCount);
   };
-  createField(15, 15);
+  createField(10, 10);
+
+  buttonL1.addEventListener('click', (event) => {
+    if (buttonL1 === event.target) {
+      if (field.classList.contains('field-L2')) field.classList.remove('field-L2');
+      if (field.classList.contains('field-L3')) field.classList.remove('field-L3');
+      createField(10, 10);
+      field.classList.add('field');
+    }
+  });
+
+  buttonL2.addEventListener('click', (event) => {
+    if (buttonL2 === event.target) {
+      if (field.classList.contains('field-L1')) field.classList.remove('field-L1');
+      if (field.classList.contains('field-L3')) field.classList.remove('field-L3');
+      createField(15, 15);
+      field.classList.add('field-L2');
+    }
+  });
+
+  buttonL3.addEventListener('click', (event) => {
+    if (buttonL3 === event.target) {
+      if (field.classList.contains('field-L1')) field.classList.remove('field-L1');
+      if (field.classList.contains('field-L2')) field.classList.remove('field-L2');
+      createField(25, 25);
+      field.classList.add('field-L3');
+    }
+  });
 
   // FOOTER STUFF
   bottom.className = 'footer';
