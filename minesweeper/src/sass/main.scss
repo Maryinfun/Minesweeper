@@ -145,7 +145,9 @@ button {
     width: 3rem;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
+
 .btn:hover {
     cursor: pointer;
 }
@@ -160,6 +162,14 @@ button {
 .data-light {
     background: $btn-color-day;
     color: $font-color-day;
+}
+.volume {
+    background-image: url('/src/assets/sound_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.volume-mute{
+    background-image: url('/src/assets/sound_mute_icon.svg');
 }
 // .dark {
 //     background: center / cover

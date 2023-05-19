@@ -1,7 +1,7 @@
 import img from '/src/assets/flag-green.svg';
 import img1 from '/src/assets/bomb.png';
 import img2 from '/src/assets/green-steps.svg';
-import img4 from '/src/assets/sound_mute_icon.svg';
+// import img4 from '/src/assets/sound_icon.svg';
 import img3 from '/src/assets/theme-icon.svg';
 export const addField = () => {
   console.log(1);
@@ -69,9 +69,8 @@ export const addField = () => {
   const createField = (width, height) => {
     const cellsCount = width * height;
     field.innerHTML = '<button></button>'.repeat(cellsCount);
-    
   };
-  createField(10, 10, 15);
+  createField(15, 15);
 
   // FOOTER STUFF
   bottom.className = 'footer';
@@ -92,5 +91,5 @@ export const addField = () => {
   // wrapFooter2.appendChild(buttonLight);
   buttonVol.className = 'btn volume';
   wrapFooter.appendChild(buttonVol);
-  buttonVol.innerHTML = `<img src = '${img4}' style = 'scale: 50%'>`;
+  // buttonVol.innerHTML = `<img src = '${img4}' style = 'scale: 100%' class = 'imgvol'>`;
 };
