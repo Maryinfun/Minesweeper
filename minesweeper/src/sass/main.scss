@@ -138,7 +138,7 @@ body {
     grid-template-columns: repeat(25, 30px);
     grid-template-rows: repeat(25, 30px);
 }
-button {
+.button {
     // height: 40px;
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -157,6 +157,7 @@ button {
     max-width: 920px;
     margin-bottom: 2rem;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-self: center;
     justify-content: center;
@@ -167,6 +168,7 @@ button {
     width: 95%;
     display: flex;
     justify-content: space-evenly;
+    margin-left: 2rem;
 }
 .dark, .volume {
     width: 3rem;
@@ -195,9 +197,42 @@ button {
     background-repeat: no-repeat;
     background-position: center;
 }
-.volume-mute{
+.volume-mute {
     background-image: url('/src/assets/sound_mute_icon.svg');
 }
+.h1 {
+    font-size: 1.5rem;
+    align-self: center;
+    color: $font-color-day;
+    text-shadow: $text-shadow;
+    margin-top: 2rem;
+}
+.h1-day {
+    color: $font-color-night;
+    text-shadow: $text-shadow-day;
+}
+.statistic {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(5, 2rem);
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+    margin: 0 2rem 2rem 2rem;
+}
+.line {
+    // background: $stat-color;
+    border-color: $background-night;
+    color: $font-color-day;
+
+
+}
+.line-day {
+    // background: $stat-color-day;
+    border-color: $background-day;
+    color: $font-color-night;
+
+}
+
 // .dark {
 //     background: center / cover
 //     url("/src/assets/theme-icon.svg");

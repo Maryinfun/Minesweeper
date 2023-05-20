@@ -1,5 +1,5 @@
 import img from '/src/assets/flag-green.svg';
-import img1 from '/src/assets/bomb.png';
+import img1 from '/src/assets/bomb.svg';
 import img2 from '/src/assets/green-steps.svg';
 // import img4 from '/src/assets/sound_icon.svg';
 import img3 from '/src/assets/theme-icon.svg';
@@ -16,7 +16,7 @@ export const addField = () => {
   const flagQnt = document.createElement('span');
   const bombQnt = document.createElement('span');
   const clickQnt = document.createElement('span');
-//   const wrap2 = document.createElement('div');
+  // const wrap2 = document.createElement('div');
   const time = document.createElement('span');
   const inputBomb = document.createElement('textarea');
 
@@ -32,6 +32,9 @@ export const addField = () => {
   // const wrapFooter2 = document.createElement('div');
   const buttonSave = document.createElement('button');
   const buttonLoad = document.createElement('button');
+  const title = document.createElement('h1');
+  const stat = document.createElement('div');
+  //   const line = document.createElement('span');
 
   // HEADER STUFF
   top.className = 'header';
@@ -59,13 +62,13 @@ export const addField = () => {
   clickQnt.className = 'data clicks';
   wrap.appendChild(clickQnt);
   clickQnt.innerHTML = `<img src = '${img2}' style = 'scale: 75%'>`;
-//   wrap2.className = 'wrapper2';
-//   top.appendChild(wrap2);
+  //   wrap2.className = 'wrapper2';
+  //   top.appendChild(wrap2);
   time.className = 'data timer';
   wrap.appendChild(time);
   inputBomb.className = 'area';
   wrap.appendChild(inputBomb);
-  inputBomb.placeholder = 'SET BOMB NUMBER';
+  inputBomb.placeholder = 'SET MINES NUMBER';
 
   // MAIN STUFF
   middle.className = 'main';
@@ -75,9 +78,14 @@ export const addField = () => {
 
   const createField = (WIDTH, HEIGHT) => {
     const cellsCount = WIDTH * HEIGHT;
-    field.innerHTML = '<button></button>'.repeat(cellsCount);
+    field.innerHTML = '<button class = button></button>'.repeat(cellsCount);
   };
   createField(10, 10);
+
+  buttonNG.addEventListener('click', () => document.location.reload());
+  buttonL1.addEventListener('click', () => document.location.reload());
+//   buttonL2.addEventListener('click', () => document.location.reload());
+//   buttonL3.addEventListener('click', () => document.location.reload());
 
   buttonL1.addEventListener('click', (event) => {
     if (buttonL1 === event.target) {
@@ -126,4 +134,11 @@ export const addField = () => {
   buttonVol.className = 'btn volume';
   wrapFooter.appendChild(buttonVol);
   // buttonVol.innerHTML = `<img src = '${img4}' style = 'scale: 100%' class = 'imgvol'>`;
+  title.className = 'h1';
+  bottom.appendChild(title);
+  title.innerHTML = 'TOP 10 RESULTS';
+  stat.className = 'statistic';
+  bottom.appendChild(stat);
+  //   stat.appendChild(line);
+  stat.innerHTML = '<span class = line></span>'.repeat(10);
 };
