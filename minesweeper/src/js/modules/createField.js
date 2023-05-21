@@ -84,8 +84,8 @@ export const addField = () => {
 
   buttonNG.addEventListener('click', () => document.location.reload());
   buttonL1.addEventListener('click', () => document.location.reload());
-//   buttonL2.addEventListener('click', () => document.location.reload());
-//   buttonL3.addEventListener('click', () => document.location.reload());
+  //   buttonL2.addEventListener('click', () => document.location.reload());
+  //   buttonL3.addEventListener('click', () => document.location.reload());
 
   buttonL1.addEventListener('click', (event) => {
     if (buttonL1 === event.target) {

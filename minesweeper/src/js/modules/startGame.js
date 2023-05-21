@@ -1,35 +1,36 @@
+import { baseValue } from './baseValue';
 import img1 from '/src/assets/bomb.svg';
 import img2 from '/src/assets/Pow.svg';
 
 export const startGame = () => {
   const field = document.querySelector('.field');
-  const cellsCount = 10 * 10;
   const cells = [...field.children];
+  let closedCount = baseValue.cellsCount;
 
-  let closedCount = cellsCount;
-
-//   first click
-    const bombs = [...Array(cellsCount).keys()]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 10);
-  console.log(bombs);
-  field.addEventListener('click', (event) => {
-    if (event.target.tagName !== 'BUTTON') {
-      return;
+  function addBombs(count) {
+    let arr = [];
+    const bombsMid = [...Array(count).keys()].sort(() => Math.random() - 0.5)
+      .slice(0, baseValue.defBombs + 1);
+    let bombsFiltered = bombsMid.filter(el => el !== baseValue.firstInd);
+    if (bombsFiltered.length > 10) {
+      bombsFiltered.slice(0, 10).forEach((el) => arr.push(el));
+    } else {
+      bombsFiltered.forEach((el) => arr.push(el));
     }
-
-    const index = cells.indexOf(event.target);
-    console.log(index)
-    const column = index % 10;
-    const row = Math.floor(index / 10);
-    open(row, column);
-  });
+    baseValue.bombsArray = arr;
+  }
 
   function isValid(row, column) {
-    return row >= 0
-          && row < 10
-          && column >= 0
-          && column < 10;
+    return row >= 0 && row < Math.sqrt(baseValue.cellsCount) && column >= 0
+    && column < Math.sqrt(baseValue.cellsCount);
+  }
+
+  function isBomb(row, column) {
+    if (!isValid(row, column)) return false;
+
+    const index = row * Math.sqrt(baseValue.cellsCount) + column;
+
+    return baseValue.bombsArray.includes(index);
   }
 
   function getCount(row, column) {
@@ -47,7 +48,7 @@ export const startGame = () => {
   function open(row, column) {
     if (!isValid(row, column)) return;
 
-    const index = row * 10 + column;
+    const index = row * Math.sqrt(baseValue.cellsCount) + column;
     const cell = cells[index];
 
     if (cell.disabled === true) return;
@@ -56,32 +57,27 @@ export const startGame = () => {
 
     if (isBomb(row, column)) {
       cell.innerHTML = `<img src = '${img2}'>`;
-      for (let i of bombs) {
-        console.log('HI')
+      baseValue.bombsArray.forEach(i => {
         cells.forEach(element => {
-        cells[i].disabled = true;
+          cells[i].disabled = true;
           if (cells.indexOf(element) === i && index !== i) {
             cells[i].innerHTML = `<img src = '${img1}'>`;
-          };
+          }
         });
-      }
-      for (let y = 0; y < cellsCount; y += 1) {
-        (!bombs.includes(y)) ? cells[y].disabled = true : null; 
-      }
-      //   endGame();
-      //   alert('you loose');
-      return;
+      //   return;
+      });
     }
 
     closedCount -= 1;
-    if (closedCount <= 10) {
+    if (closedCount <= baseValue.defBombs) {
       alert('you won!');
       return;
     }
 
     const count = getCount(row, column);
+    console.log(count);
 
-    if (count !== 0) {
+    if (count !== 0 && !isBomb(row, column)) {
       cell.innerHTML = count;
       return;
     }
@@ -92,30 +88,22 @@ export const startGame = () => {
       }
     }
   }
+  field.addEventListener('click', (event) => {
+    const index = cells.indexOf(event.target);
+    const column = index % Math.sqrt(baseValue.cellsCount);
+    const row = Math.floor(index / Math.sqrt(baseValue.cellsCount));
 
-  function endGame() {
-    if(isBomb() === true) {
-        cells.forEach(cell => {
-            open()
-        });
+    if (event.target.tagName !== 'BUTTON') {
+      return;
     }
-  }
-  function isBomb(row, column) {
-    if (!isValid(row, column)) return false;
+    if (event.target.tagName === 'BUTTON') {
+      baseValue.defSteps += 1;
+      if (baseValue.firstInd === ' ') baseValue.firstInd = index;
+      open(row, column);
+    }
 
-    const index = row * 10 + column;
-
-    return bombs.includes(index);
-  }
-}
-
-
-  
-    // function revealMines() {
-    //     //Highlight all mines in red
-    //     for (let i=0; i<10; i++) {
-    //       for(let j=0; j<10; j++) {
-    //             if (cell.getAttribute("mine")=="true") cell.className="mine";
-    //       }
-    //     }
-    // }  
+    if (baseValue.defSteps === 1) {
+      addBombs(baseValue.cellsCount);
+    }
+  });
+};
