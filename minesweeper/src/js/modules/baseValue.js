@@ -8,5 +8,6 @@ export const baseValue = {
   defSound: 'On',
   firstInd: ' ',
   bombsArray: [],
-  cellsCount: 10 * 10
+  cellsCount: 10 * 10,
+  cell: ''
 };

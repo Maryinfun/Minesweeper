@@ -4,12 +4,12 @@ import img2 from '/src/assets/Pow.svg';
 
 export const startGame = () => {
   const field = document.querySelector('.field');
+  const cellsCount = baseValue.cellsCount;
   const cells = [...field.children];
-  let closedCount = baseValue.cellsCount;
-
-  function addBombs(count) {
+  let closedCount = cellsCount;
+  function addBombs() {
     let arr = [];
-    const bombsMid = [...Array(count).keys()].sort(() => Math.random() - 0.5)
+    const bombsMid = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5)
       .slice(0, baseValue.defBombs + 1);
     let bombsFiltered = bombsMid.filter(el => el !== baseValue.firstInd);
     if (bombsFiltered.length > 10) {
@@ -57,15 +57,19 @@ export const startGame = () => {
 
     if (isBomb(row, column)) {
       cell.innerHTML = `<img src = '${img2}'>`;
-      baseValue.bombsArray.forEach(i => {
+      (baseValue.bombsArray).forEach(i => {
         cells.forEach(element => {
           cells[i].disabled = true;
           if (cells.indexOf(element) === i && index !== i) {
             cells[i].innerHTML = `<img src = '${img1}'>`;
           }
         });
-      //   return;
       });
+      for (let y = 0; y < cellsCount; y += 1) {
+        if (!(baseValue.bombsArray).includes(y)) cells[y].disabled = true;
+      }
+      // alert('you lose!');
+      return;
     }
 
     closedCount -= 1;
@@ -75,8 +79,6 @@ export const startGame = () => {
     }
 
     const count = getCount(row, column);
-    console.log(count);
-
     if (count !== 0 && !isBomb(row, column)) {
       cell.innerHTML = count;
       return;
@@ -88,22 +90,25 @@ export const startGame = () => {
       }
     }
   }
+
   field.addEventListener('click', (event) => {
     const index = cells.indexOf(event.target);
     const column = index % Math.sqrt(baseValue.cellsCount);
     const row = Math.floor(index / Math.sqrt(baseValue.cellsCount));
-
     if (event.target.tagName !== 'BUTTON') {
       return;
     }
+
     if (event.target.tagName === 'BUTTON') {
       baseValue.defSteps += 1;
       if (baseValue.firstInd === ' ') baseValue.firstInd = index;
+      
+      if (baseValue.defSteps === 1) {
+        addBombs();
+      }
       open(row, column);
-    }
-
-    if (baseValue.defSteps === 1) {
-      addBombs(baseValue.cellsCount);
+      
+    
     }
   });
 };

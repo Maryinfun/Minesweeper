@@ -3,8 +3,8 @@ import img1 from '/src/assets/bomb.svg';
 import img2 from '/src/assets/green-steps.svg';
 // import img4 from '/src/assets/sound_icon.svg';
 import img3 from '/src/assets/theme-icon.svg';
+import { baseValue } from './baseValue';
 export const addField = () => {
-  console.log(1);
   const body = document.querySelector('body');
 
   const top = document.createElement('header');
@@ -102,6 +102,10 @@ export const addField = () => {
       if (field.classList.contains('field-L3')) field.classList.remove('field-L3');
       createField(15, 15);
       field.classList.add('field-L2');
+      baseValue.level = 'medium';
+      baseValue.cellsCount = 15 * 15;
+      baseValue.defBombs = 25;
+      baseValue.defFlags = 25;
     }
   });
 
@@ -111,6 +115,10 @@ export const addField = () => {
       if (field.classList.contains('field-L2')) field.classList.remove('field-L2');
       createField(25, 25);
       field.classList.add('field-L3');
+      baseValue.level = 'expert';
+      baseValue.cellsCount = 25 * 25;
+      baseValue.defBombs = 50;
+      baseValue.defFlags = 50;
     }
   });
 
@@ -127,7 +135,7 @@ export const addField = () => {
   buttonLoad.innerHTML = 'LOAD';
   buttonDark.className = 'btn dark';
   wrapFooter.appendChild(buttonDark);
-  // buttonDark.innerHTML = 'Dark/Light';s
+  // buttonDark.innerHTML = 'Dark/Light';
   buttonDark.innerHTML = `<img src = '${img3}' style = 'scale: 50%' class='img3'>`;
   // buttonLight.className = 'btn btnLight';
   // wrapFooter2.appendChild(buttonLight);
