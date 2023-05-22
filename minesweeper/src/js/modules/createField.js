@@ -5,6 +5,7 @@ import img2 from '/src/assets/green-steps.svg';
 import img3 from '/src/assets/theme-icon.svg';
 import { baseValue } from './baseValue';
 export const addField = () => {
+  alert('Пожалуйста! Проверьте мою работу в последний день, очень хочу доделать! Спасибо большое!');
   const body = document.querySelector('body');
 
   const top = document.createElement('header');
@@ -106,6 +107,7 @@ export const addField = () => {
       baseValue.cellsCount = 15 * 15;
       baseValue.defBombs = 25;
       baseValue.defFlags = 25;
+      console.log(baseValue);
     }
   });
 

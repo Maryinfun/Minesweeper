@@ -12,8 +12,8 @@ export const startGame = () => {
     const bombsMid = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5)
       .slice(0, baseValue.defBombs + 1);
     let bombsFiltered = bombsMid.filter(el => el !== baseValue.firstInd);
-    if (bombsFiltered.length > 10) {
-      bombsFiltered.slice(0, 10).forEach((el) => arr.push(el));
+    if (bombsFiltered.length > baseValue.defBombs) {
+      bombsFiltered.slice(0, baseValue.defBombs).forEach((el) => arr.push(el));
     } else {
       bombsFiltered.forEach((el) => arr.push(el));
     }
@@ -102,13 +102,11 @@ export const startGame = () => {
     if (event.target.tagName === 'BUTTON') {
       baseValue.defSteps += 1;
       if (baseValue.firstInd === ' ') baseValue.firstInd = index;
-      
+
       if (baseValue.defSteps === 1) {
         addBombs();
       }
       open(row, column);
-      
-    
     }
   });
 };
