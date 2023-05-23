@@ -5,7 +5,7 @@ import img2 from '/src/assets/green-steps.svg';
 import img3 from '/src/assets/theme-icon.svg';
 import { baseValue } from './baseValue';
 export const addField = () => {
-  alert('Пожалуйста! Проверьте мою работу в последний день, очень хочу доделать! Спасибо большое!');
+//   alert('Пожалуйста! Проверьте мою работу в последний день, очень хочу доделать! Спасибо большое!');
   const body = document.querySelector('body');
 
   const top = document.createElement('header');
@@ -78,6 +78,7 @@ export const addField = () => {
   middle.appendChild(field);
 
   const createField = (WIDTH, HEIGHT) => {
+    console.log(WIDTH);
     const cellsCount = WIDTH * HEIGHT;
     field.innerHTML = '<button class = button></button>'.repeat(cellsCount);
   };
