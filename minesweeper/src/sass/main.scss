@@ -94,8 +94,54 @@ body {
     box-sizing: border-box;
     display: flex;
 }
-.flagLeft {
+.flag {
+    display:flex;
+    justify-content: space-between;
     padding-left: 10px;
+}
+.flagImg {
+    // background-image: url('/src/assets/flag-green.svg');
+    // background-repeat: no-repeat;
+    // background-position: center;
+    width: 30%;
+}
+.flagCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+.bombLeft {
+    display: flex;
+    justify-content: space-between;
+}
+.bombImg {
+    background-image: url('/src/assets/bomb.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30%;   
+}
+.bombCount {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clicks {
+    display:flex;
+    justify-content: space-between;
+}
+.clickImg {
+    background-image: url('/src/assets/green-steps.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30%;
+}
+.clickCount {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
 }
 // .timer {
 //     width: 5rem;
@@ -231,6 +277,12 @@ body {
     border-color: $background-day;
     color: $font-color-night;
 
+}
+.color1 {
+    color: purple;
+}
+.color2 {
+    color: red;
 }
 
 // .dark {

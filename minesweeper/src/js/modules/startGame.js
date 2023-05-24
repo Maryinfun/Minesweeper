@@ -83,6 +83,10 @@ export const startGame = () => {
     const count = getCount(row, column);
     if (count !== 0 && !isBomb(row, column)) {
       cell.innerHTML = count;
+      document.querySelectorAll('.button').forEach(el => {
+        if (cell.innerHTML === '1') el.classList.add('color1');
+        if (cell.innerHTML === '2') el.classList.add('color2');
+      });
       return;
     }
 
@@ -94,7 +98,7 @@ export const startGame = () => {
   }
 
   document.querySelector('.field').addEventListener('click', (event) => {
-    console.log(baseValue);
+    // let stepsCount = 0;
     const index = [...document.querySelector('.field').children].indexOf(event.target);
     const column = index % Math.sqrt(baseValue.cellsCount);
     const row = Math.floor(index / Math.sqrt(baseValue.cellsCount));
@@ -104,6 +108,7 @@ export const startGame = () => {
 
     if (event.target.tagName === 'BUTTON') {
       baseValue.defSteps += 1;
+      document.querySelector('.clickCount').innerHTML = baseValue.defSteps;
       if (baseValue.firstInd === ' ') baseValue.firstInd = index;
 
       if (baseValue.defSteps === 1) {

@@ -5,7 +5,6 @@ import img2 from '/src/assets/green-steps.svg';
 import img3 from '/src/assets/theme-icon.svg';
 import { baseValue } from './baseValue';
 export const addField = () => {
-//   alert('Пожалуйста! Проверьте мою работу в последний день, очень хочу доделать! Спасибо большое!');
   const body = document.querySelector('body');
 
   const top = document.createElement('header');
@@ -14,9 +13,15 @@ export const addField = () => {
   const buttonL1 = document.createElement('button');
   const buttonL2 = document.createElement('button');
   const buttonL3 = document.createElement('button');
-  const flagQnt = document.createElement('span');
-  const bombQnt = document.createElement('span');
-  const clickQnt = document.createElement('span');
+  const flagQnt = document.createElement('div');
+  const flagQntImg = document.createElement('span');
+  const flagQntCount = document.createElement('span');
+  const bombQnt = document.createElement('div');
+  const bombQntImg = document.createElement('span');
+  const bombQntCount = document.createElement('span');
+  const clickQnt = document.createElement('div');
+  const clickQntImg = document.createElement('span');
+  const clickQntCount = document.createElement('span');
   // const wrap2 = document.createElement('div');
   const time = document.createElement('span');
   const inputBomb = document.createElement('textarea');
@@ -54,17 +59,31 @@ export const addField = () => {
   buttonL3.className = 'btn btnL3';
   wrap.appendChild(buttonL3);
   buttonL3.innerHTML = 'EXPERT';
-  flagQnt.className = 'data flagLeft';
+  flagQnt.className = 'data flag';
   wrap.appendChild(flagQnt);
-  flagQnt.innerHTML = `<img src = '${img}' style = 'width: 25%'>`;
+  flagQntImg.innerHTML = `<img src = '${img}' style = 'scale: 100%`;
+  flagQntImg.className = 'flagImg';
+  flagQnt.appendChild(flagQntImg);
+  flagQntCount.className = 'flagCount';
+  flagQnt.appendChild(flagQntCount);
+  flagQntCount.innerHTML = baseValue.defFlags;
   bombQnt.className = 'data bombLeft';
   wrap.appendChild(bombQnt);
-  bombQnt.innerHTML = `<img src = '${img1}' style = 'scale: 75%'>`;
+  bombQntImg.className = 'bombImg';
+  bombQnt.appendChild(bombQntImg);
+  bombQntCount.className = 'bombCount';
+  bombQnt.appendChild(bombQntCount);
+  bombQntCount.innerHTML = baseValue.defBombs;
+    // bombQnt.innerHTML = `<img src = '${img1}' style = 'scale: 75%'>`;
   clickQnt.className = 'data clicks';
   wrap.appendChild(clickQnt);
-  clickQnt.innerHTML = `<img src = '${img2}' style = 'scale: 75%'>`;
-  //   wrap2.className = 'wrapper2';
-  //   top.appendChild(wrap2);
+  clickQntImg.className = 'clickImg';
+  clickQnt.appendChild(clickQntImg);
+  // clickQntImg.innerHTML = `<img src = '${img2}' style = 'scale: 75%'>`;
+  clickQntCount.className = 'clickCount';
+  clickQnt.appendChild(clickQntCount);
+  clickQntCount.innerHTML = ' ';
+
   time.className = 'data timer';
   wrap.appendChild(time);
   inputBomb.className = 'area';
@@ -106,8 +125,10 @@ export const addField = () => {
       field.classList.add('field-L2');
       baseValue.level = 'medium';
       baseValue.cellsCount = 15 * 15;
-      baseValue.defBombs = 25;
-      baseValue.defFlags = 25;
+      baseValue.defBombs = 50;
+      baseValue.defFlags = 50;
+      flagQntCount.innerHTML = baseValue.defFlags;
+      bombQntCount.innerHTML = baseValue.defBombs;
       console.log(baseValue);
     }
   });
@@ -120,8 +141,11 @@ export const addField = () => {
       field.classList.add('field-L3');
       baseValue.level = 'expert';
       baseValue.cellsCount = 25 * 25;
-      baseValue.defBombs = 50;
-      baseValue.defFlags = 50;
+      baseValue.defBombs = 99;
+      baseValue.defFlags = 99;
+      flagQntCount.innerHTML = baseValue.defFlags;
+      bombQntCount.innerHTML = baseValue.defBombs;
+      console.log(baseValue);
     }
   });
 

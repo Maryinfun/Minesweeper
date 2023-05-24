@@ -9,5 +9,6 @@ export const baseValue = {
   firstInd: ' ',
   bombsArray: [],
   cellsCount: 10 * 10,
-  cell: ''
+  cell: '',
+  stepsCount: 0
 };
