@@ -1,6 +1,6 @@
 import img from '/src/assets/flag-green.svg';
-import img1 from '/src/assets/bomb.svg';
-import img2 from '/src/assets/green-steps.svg';
+// import img1 from '/src/assets/bomb.svg';
+// import img2 from '/src/assets/green-steps.svg';
 // import img4 from '/src/assets/sound_icon.svg';
 import img3 from '/src/assets/theme-icon.svg';
 import { baseValue } from './baseValue';
@@ -10,6 +10,7 @@ export const addField = () => {
   const top = document.createElement('header');
   const buttonNG = document.createElement('button');
   const wrap = document.createElement('div');
+  const message = document.createElement('span');
   const buttonL1 = document.createElement('button');
   const buttonL2 = document.createElement('button');
   const buttonL3 = document.createElement('button');
@@ -23,7 +24,7 @@ export const addField = () => {
   const clickQntImg = document.createElement('span');
   const clickQntCount = document.createElement('span');
   // const wrap2 = document.createElement('div');
-  const time = document.createElement('span');
+  //   const time = document.createElement('span');
   const inputBomb = document.createElement('textarea');
 
   const middle = document.createElement('main');
@@ -50,6 +51,8 @@ export const addField = () => {
   buttonNG.innerHTML = 'NEW GAME';
   wrap.className = 'wrapper';
   top.appendChild(wrap);
+  message.className = 'message';
+  wrap.appendChild(message);
   buttonL1.className = 'btn btnL1';
   wrap.appendChild(buttonL1);
   buttonL1.innerHTML = 'BEGINNER';
@@ -74,7 +77,7 @@ export const addField = () => {
   bombQntCount.className = 'bombCount';
   bombQnt.appendChild(bombQntCount);
   bombQntCount.innerHTML = baseValue.defBombs;
-    // bombQnt.innerHTML = `<img src = '${img1}' style = 'scale: 75%'>`;
+  // bombQnt.innerHTML = `<img src = '${img1}' style = 'scale: 75%'>`;
   clickQnt.className = 'data clicks';
   wrap.appendChild(clickQnt);
   clickQntImg.className = 'clickImg';
@@ -82,13 +85,13 @@ export const addField = () => {
   // clickQntImg.innerHTML = `<img src = '${img2}' style = 'scale: 75%'>`;
   clickQntCount.className = 'clickCount';
   clickQnt.appendChild(clickQntCount);
-  clickQntCount.innerHTML = ' ';
+  clickQntCount.innerHTML = '0';
 
-  time.className = 'data timer';
-  wrap.appendChild(time);
+  //   time.className = 'data timer';
+  //   wrap.appendChild(time);
   inputBomb.className = 'area';
   wrap.appendChild(inputBomb);
-  inputBomb.placeholder = 'SET MINES NUMBER';
+  inputBomb.placeholder = 'TIME';
 
   // MAIN STUFF
   middle.className = 'main';
@@ -97,7 +100,6 @@ export const addField = () => {
   middle.appendChild(field);
 
   const createField = (WIDTH, HEIGHT) => {
-    console.log(WIDTH);
     const cellsCount = WIDTH * HEIGHT;
     field.innerHTML = '<button class = button></button>'.repeat(cellsCount);
   };
@@ -123,13 +125,13 @@ export const addField = () => {
       if (field.classList.contains('field-L3')) field.classList.remove('field-L3');
       createField(15, 15);
       field.classList.add('field-L2');
-      baseValue.level = 'medium';
+      baseValue.level = 'MEDIUM';
+      baseValue.defSteps = 0;
+      baseValue.defTime = 0;
       baseValue.cellsCount = 15 * 15;
       baseValue.defBombs = 50;
-      baseValue.defFlags = 50;
       flagQntCount.innerHTML = baseValue.defFlags;
       bombQntCount.innerHTML = baseValue.defBombs;
-      console.log(baseValue);
     }
   });
 
@@ -139,13 +141,13 @@ export const addField = () => {
       if (field.classList.contains('field-L2')) field.classList.remove('field-L2');
       createField(25, 25);
       field.classList.add('field-L3');
-      baseValue.level = 'expert';
+      baseValue.level = 'EXPERT';
+      baseValue.defSteps = 0;
+      baseValue.defTime = 0;
       baseValue.cellsCount = 25 * 25;
       baseValue.defBombs = 99;
-      baseValue.defFlags = 99;
       flagQntCount.innerHTML = baseValue.defFlags;
       bombQntCount.innerHTML = baseValue.defBombs;
-      console.log(baseValue);
     }
   });
 
@@ -171,9 +173,13 @@ export const addField = () => {
   // buttonVol.innerHTML = `<img src = '${img4}' style = 'scale: 100%' class = 'imgvol'>`;
   title.className = 'h1';
   bottom.appendChild(title);
-  title.innerHTML = 'TOP 10 RESULTS';
+  title.innerHTML = 'TOP 10 WIN RESULTS';
   stat.className = 'statistic';
   bottom.appendChild(stat);
   //   stat.appendChild(line);
   stat.innerHTML = '<span class = line></span>'.repeat(10);
+  document.querySelectorAll('.line').forEach((v, i) => {
+    const item = v;
+    if (baseValue.records[i]) item.innerText = `${i + 1}. ${baseValue.records[i]}`;
+  });
 };
