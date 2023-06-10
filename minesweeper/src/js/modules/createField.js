@@ -53,6 +53,7 @@ export const addField = () => {
   top.appendChild(wrap);
   message.className = 'message';
   wrap.appendChild(message);
+//   message.innerText = `Hooray! You found all mines in ${baseValue.defTime} seconds and ${baseValue.defSteps} moves!`;
   buttonL1.className = 'btn btnL1';
   wrap.appendChild(buttonL1);
   buttonL1.innerHTML = 'BEGINNER';

@@ -46,17 +46,34 @@ body {
 // }
 .message {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
+    width: 90%;
+    height: 40%;
     z-index: 1;
     scale: 0;
-    transition: all 0.3s;
-    font-style: inherit;
-    color: inherit;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.message-show {
+.message-win {
     scale: 1;
+    background-color: $message-win;
+    color: $message-text;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+    border-radius: 5px;
+    box-shadow: $shadow-day;
+}
+.message-lost {
+    scale: 1;
+    background-color: $message-lost;
+    color: $message-text;
+    text-align: center;
+    font-weight: 700;
+    font-size: 4rem;
+    border-radius: 5px;
+    box-shadow: $shadow-day;
 }
 .wrapper {
     max-width: 920px;
@@ -283,6 +300,7 @@ body {
     text-align: center;
     border-color: $background-night;
     color: $font-color-day;
+    text-shadow: $text-shadow;
 
 
 }
@@ -290,6 +308,7 @@ body {
     // background: $stat-color-day;
     border-color: $background-day;
     color: $font-color-night;
+    text-shadow: $text-shadow-day;
 
 }
 .color1 {

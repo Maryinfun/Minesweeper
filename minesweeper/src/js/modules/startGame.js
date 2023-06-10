@@ -45,13 +45,16 @@ export const startGame = () => {
           if (!document.querySelector('.volume').classList.contains('volume-mute')) audioLost.play();
           //   document.querySelector('.message').classList.add('message-show');
           //   document.querySelector('.message').innerText = 'Game over. Try again';
-          window.alert('Game over. Try again');
+          //   window.alert('Game over. Try again');
+          document.querySelector('.message').innerText = 'Game over. Try again';
+          document.querySelector('.message').classList.add('message-lost');
         }
       });
       if (count === baseValue.defFlags && game === true) {
         clearInterval(interval);
         if (!document.querySelector('.volume').classList.contains('volume-mute')) audioWin.play();
-        window.alert(`Hooray! You found all mines in ${baseValue.defTime} seconds and ${baseValue.defSteps} moves!`);
+        document.querySelector('.message').innerText = `Hooray! You found all mines in ${baseValue.defTime} seconds and ${baseValue.defSteps} moves!`;
+        document.querySelector('.message').classList.add('message-win');
         baseValue.records.unshift(`${baseValue.level} ${baseValue.defBombs} mines in ${baseValue.defTime} seconds and ${baseValue.defSteps} moves!`);
         baseValue.records.pop();
         localStorage.setItem('records', JSON.stringify(baseValue.records));
